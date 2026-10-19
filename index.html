@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows 12 Concept</title>
+<meta name="description" content="An imaginary Windows 12 desktop that runs entirely in your browser.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300d4ff'/><stop offset='1' stop-color='%237b5cff'/></linearGradient></defs><circle cx='50' cy='50' r='46' fill='url(%23g)'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+<!-- Boot -->
+<div id="boot">
+  <div class="orb big"></div>
+  <div class="spinner"></div>
+</div>
+
+<!-- Lock screen -->
+<div id="lock" class="hidden">
+  <div class="lock-time" id="lockTime">--:--</div>
+  <div class="lock-date" id="lockDate"></div>
+  <div class="lock-hint">Click or press any key to unlock</div>
+</div>
+
+<!-- Desktop -->
+<div id="desktop" class="hidden">
+  <div id="icons"></div>
+  <div id="windows"></div>
+
+  <!-- Widgets panel -->
+  <aside id="widgets" class="panel left hidden">
+    <div class="w-card">
+      <div class="w-title">Weather</div>
+      <div class="weather"><span class="wi">⛅</span><div><b>24°C</b><small>Partly cloudy · Ludhiana-ish</small></div></div>
+    </div>
+    <div class="w-card">
+      <div class="w-title">Calendar</div>
+      <div id="miniCal"></div>
+    </div>
+    <div class="w-card">
+      <div class="w-title">System</div>
+      <div class="stat"><span>CPU</span><div class="bar"><i id="cpuBar"></i></div></div>
+      <div class="stat"><span>RAM</span><div class="bar"><i id="ramBar"></i></div></div>
+      <div class="stat"><span>NPU</span><div class="bar"><i id="npuBar"></i></div></div>
+    </div>
+    <div class="w-card">
+      <div class="w-title">Quick note</div>
+      <textarea id="quickNote" placeholder="Type something..."></textarea>
+    </div>
+  </aside>
+
+  <!-- Start menu -->
+  <section id="start" class="panel center hidden">
+    <input id="startSearch" placeholder="Search apps, files, and the web" autocomplete="off">
+    <div class="sec-title">Pinned</div>
+    <div id="pinned" class="grid"></div>
+    <div class="sec-title">Recommended</div>
+    <div id="recommended" class="rec"></div>
+    <div class="start-foot">
+      <div class="user"><span class="avatar">S</span> Sharvil</div>
+      <div class="power">
+        <button id="btnLock" title="Lock">🔒</button>
+        <button id="btnRestart" title="Restart">⟳</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick settings -->
+  <section id="quick" class="panel right hidden">
+    <div class="tiles">
+      <button class="tile on" data-t="wifi">📶<span>Wi-Fi</span></button>
+      <button class="tile on" data-t="bt">🔷<span>Bluetooth</span></button>
+      <button class="tile" data-t="focus">🌙<span>Focus</span></button>
+      <button class="tile" data-t="theme">🎨<span>Theme</span></button>
+    </div>
+    <label class="slider">☀️ <input type="range" id="brightness" min="30" max="100" value="100"></label>
+    <label class="slider">🔊 <input type="range" id="volume" min="0" max="100" value="60"></label>
+    <div class="battery">🔋 <span id="batt">100%</span></div>
+  </section>
+
+  <!-- Context menu -->
+  <ul id="ctx" class="hidden">
+    <li data-a="refresh">Refresh</li>
+    <li data-a="wallpaper">Next wallpaper</li>
+    <li data-a="theme">Toggle dark / light</li>
+    <li data-a="settings">Personalize</li>
+    <li data-a="terminal">Open Terminal</li>
+  </ul>
+
+  <!-- Taskbar -->
+  <footer id="taskbar">
+    <div class="tb-left"><button id="btnWidgets" class="tb-btn" title="Widgets">🧩</button></div>
+    <div class="tb-center">
+      <button id="btnStart" class="tb-btn orb-btn" title="Start"><span class="orb"></span></button>
+      <div id="tbApps"></div>
+    </div>
+    <div class="tb-right">
+      <button id="btnQuick" class="tb-btn tray">📶 🔊 🔋</button>
+      <div class="clock" id="tbClock"><span id="tbTime"></span><small id="tbDate"></small></div>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
